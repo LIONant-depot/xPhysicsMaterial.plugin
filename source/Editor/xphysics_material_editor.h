@@ -11,7 +11,7 @@ namespace xphysics_material_editor
 {
     struct session : xeditor::descriptor_editor
     {
-        session(xresource::full_guid Guid, e10::library::guid LibraryGuid, xgpu::device* pDevice) noexcept
+        session(xresource::full_guid Guid, xresource_editor::library::guid LibraryGuid, xgpu::device* pDevice) noexcept
             : descriptor_editor("PhysicsMaterial", Guid, LibraryGuid, pDevice)
         {
             m_Document.Load();
@@ -22,7 +22,7 @@ namespace xphysics_material_editor
 
     inline const xeditor::auto_register_resource_editor g_Registration
     { xlioncore::physics::material::type_guid_v
-    , [](xresource::full_guid Guid, e10::library::guid LibraryGuid, xgpu::device* pDevice) -> std::unique_ptr<xeditor::resource_editor>
+    , [](xresource::full_guid Guid, xresource_editor::library::guid LibraryGuid, xgpu::device* pDevice) -> std::unique_ptr<xeditor::resource_editor>
       { return std::make_unique<session>(Guid, LibraryGuid, pDevice); }
     };
 }
